@@ -34,6 +34,11 @@ body{
     cursor:pointer;
 }
 
+.sidebar a{
+    color: #fff;
+    text-decoration: none;
+}
+
 .sidebar li:hover{
     background:#2563EB;
 }
