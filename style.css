@@ -75,7 +75,8 @@ body{
 
 
 .btn-login{
-    font-size:12px;
+    font-size:14px;
+    font-weight: bold;
     width: 20%;
     padding:12px;
     background:#003366;
