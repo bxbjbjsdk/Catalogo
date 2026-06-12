@@ -132,13 +132,13 @@
     <!-- MODAL FORMULARIO -->
     <div class="modal" id="formModal">
         <div class="modal-content">
-
+            <form action="">
             <h2>Registro de Usuario</h2>
 
             <input type="text" id="nombre" placeholder="Nombre completo"><br><br>
             <input type="date" id="fecha"><br><br>
             <input type="email" id="correo" placeholder="Correo electrónico"><br><br>
-            <input type="tel" id="telefono" placeholder="Teléfono"><br><br>
+            <input type="tel" oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="10" maxlength="10" name="telefono" id="telefono" placeholder="Teléfono"><br><br>
 
             <button onclick="enviarFormulario()">Enviar</button>
 
@@ -147,7 +147,7 @@
             <span onclick="cerrarFormulario()" style="color:red;cursor:pointer;">
                 Cerrar
             </span>
-
+            </form>
         </div>
     </div>
 
