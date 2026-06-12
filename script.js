@@ -1,52 +1,50 @@
 function mostrarProducto(nombre){
-
     document.getElementById("titulo").innerText = nombre;
-
     document.getElementById("modal").style.display = "flex";
 }
 
 function cerrarModal(){
-
     document.getElementById("modal").style.display = "none";
 }
 
-let buscador = document.getElementById("buscar");
+/* FORMULARIO */
+function abrirFormulario(){
+    document.getElementById("formModal").style.display = "flex";
+}
 
-buscador.addEventListener("keyup", function(){
+function cerrarFormulario(){
+    document.getElementById("formModal").style.display = "none";
+}
 
-    let texto = buscador.value.toLowerCase();
+function enviarFormulario(){
 
+    let nombre = document.getElementById("nombre").value;
+    let fecha = document.getElementById("fecha").value;
+    let correo = document.getElementById("correo").value;
+    let telefono = document.getElementById("telefono").value;
+
+    if(nombre === "" || fecha === "" || correo === "" || telefono === ""){
+        alert("Por favor completa todos los campos");
+        return;
+    }
+
+    alert("Registro enviado correctamente \nBienvenido " + nombre);
+
+    cerrarFormulario();
+}
+
+/* BUSCADOR */
+document.getElementById("buscar").addEventListener("keyup", function(){
+
+    let texto = this.value.toLowerCase();
     let tarjetas = document.querySelectorAll(".card");
 
-    tarjetas.forEach(function(card){
+    tarjetas.forEach(card => {
 
         let nombre = card.innerText.toLowerCase();
 
-        if(nombre.includes(texto)){
-            card.style.display = "block";
-        }else{
-            card.style.display = "none";
-        }
+        card.style.display = nombre.includes(texto) ? "block" : "none";
 
     });
 
 });
-function login() {
-    document.getElementById("loginModal").style.display = "flex";
-}
-
-function cerrarLogin() {
-    document.getElementById("loginModal").style.display = "none";
-}
-
-function validarLogin() {
-    let usuario = document.getElementById("usuario").value;
-    let password = document.getElementById("password").value;
-
-    if(usuario === "admin" && password === "1234") {
-        alert("Bienvenido " + usuario);
-        cerrarLogin();
-    } else {
-        alert("Usuario o contraseña incorrectos");
-    }
-}
