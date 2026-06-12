@@ -31,3 +31,22 @@ buscador.addEventListener("keyup", function(){
     });
 
 });
+function login() {
+    document.getElementById("loginModal").style.display = "flex";
+}
+
+function cerrarLogin() {
+    document.getElementById("loginModal").style.display = "none";
+}
+
+function validarLogin() {
+    let usuario = document.getElementById("usuario").value;
+    let password = document.getElementById("password").value;
+
+    if(usuario === "admin" && password === "1234") {
+        alert("Bienvenido " + usuario);
+        cerrarLogin();
+    } else {
+        alert("Usuario o contraseña incorrectos");
+    }
+}

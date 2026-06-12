@@ -11,19 +11,14 @@
 <body>
 
     <div class="sidebar">
-        
 
         <h2>RYC Tech</h2>
 
         <ul>
-            <li> Inicio</li>
-            <li> Smartphones</li>
-            <li> Laptops</li>
-            <li> Tablets</li>
-            <li> Audio</li>
-            <li> Smart Home</li>
-            <li> Gaming</li>
-            <li> Ofertas</li>
+            <li>Inicio</li>
+            <li>Tecnología</li>
+            <li>Accesorios</li>
+            <li>Ofertas</li>
         </ul>
 
         <div class="oferta">
@@ -39,6 +34,10 @@
 
         <div class="topbar">
             <input type="text" id="buscar" placeholder="Buscar producto...">
+
+            <button class="btn-login" onclick="login()">
+                Login
+            </button>
         </div>
 
         <div class="banner">
@@ -57,7 +56,9 @@
                 <h3>Samsung Galaxy S24</h3>
                 <p>Smartphone 5G, 256GB, 8GB RAM</p>
                 <h4>$899.99</h4>
-                <button onclick="mostrarProducto('Samsung Galaxy S24')">Ver detalles</button>
+                <button onclick="mostrarProducto('Samsung Galaxy S24')">
+                    Ver detalles
+                </button>
             </div>
 
             <div class="card">
@@ -65,7 +66,9 @@
                 <h3>MacBook Air M2</h3>
                 <p>Laptop 13.6'', SSD 256GB</p>
                 <h4>$1,199.00</h4>
-                <button onclick="mostrarProducto('MacBook Air M2')">Ver detalles</button>
+                <button onclick="mostrarProducto('MacBook Air M2')">
+                    Ver detalles
+                </button>
             </div>
 
             <div class="card">
@@ -73,7 +76,9 @@
                 <h3>Sony WH-1000XM5</h3>
                 <p>Audífonos con cancelación de ruido</p>
                 <h4>$349.99</h4>
-                <button onclick="mostrarProducto('Sony WH-1000XM5')">Ver detalles</button>
+                <button onclick="mostrarProducto('Sony WH-1000XM5')">
+                    Ver detalles
+                </button>
             </div>
 
             <div class="card">
@@ -81,7 +86,9 @@
                 <h3>Apple Watch Series 9</h3>
                 <p>GPS, resistente al agua</p>
                 <h4>$399.00</h4>
-                <button onclick="mostrarProducto('Apple Watch Series 9')">Ver detalles</button>
+                <button onclick="mostrarProducto('Apple Watch Series 9')">
+                    Ver detalles
+                </button>
             </div>
 
             <div class="card">
@@ -89,7 +96,9 @@
                 <h3>iPad Air</h3>
                 <p>Tablet 10.9", Wi-Fi</p>
                 <h4>$599.99</h4>
-                <button onclick="mostrarProducto('iPad Air')">Ver detalles</button>
+                <button onclick="mostrarProducto('iPad Air')">
+                    Ver detalles
+                </button>
             </div>
 
             <div class="card">
@@ -97,24 +106,53 @@
                 <h3>AirPods Pro</h3>
                 <p>Audio espacial y cancelación de ruido</p>
                 <h4>$249.99</h4>
-                <button onclick="mostrarProducto('AirPods Pro')">Ver detalles</button>
+                <button onclick="mostrarProducto('AirPods Pro')">
+                    Ver detalles
+                </button>
             </div>
 
         </div>
 
     </div>
 
+    <!-- Modal de detalles -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <span onclick="cerrarModal()">&times;</span>
             <h2 id="titulo"></h2>
-            <p>Consulta las características completas de este producto dentro del catálogo.</p>
+            <p>
+                Consulta las características completas de este producto
+                dentro del catálogo.
+            </p>
+        </div>
+    </div>
+
+    <!-- Modal Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span onclick="cerrarLogin()">&times;</span>
+
+            <h2>Iniciar Sesión</h2>
+
+            <input type="text" id="usuario" placeholder="Usuario">
+
+            <br><br>
+
+            <input type="password" id="password" placeholder="Contraseña">
+
+            <br><br>
+
+            <button onclick="validarLogin()">
+                Ingresar
+            </button>
         </div>
     </div>
 
     <script src="script.js"></script>
 
 </body>
+
+</html>
 
 
 <!--Para que se guarden los cambios:
