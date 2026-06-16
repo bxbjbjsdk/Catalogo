@@ -17,6 +17,7 @@
             <li><a href="tecnologia.html">Tecnología</a></li>
             <li><a href="accesorios.html">Accesorios</a></li>
             <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="admin.html">Administrador</a></li>
         </ul>
 
         <div class="oferta">
@@ -29,6 +30,7 @@
     </div>
 
     <div class="contenido">
+        
 
         <!-- TOPBAR -->
         <div class="topbar">
@@ -43,6 +45,57 @@
 
         <h2>Accesorios</h2>
 
+        <div class="productos">
+
+            <div class="card">
+                <img src="imagenes/Sony WH.jpg" alt="">
+                <h3>Sony WH-1000XM5</h3>
+                <p>Audífonos con cancelación de ruido</p>
+                <h4>$349.99</h4>
+                <button onclick="mostrarProducto('Sony WH-1000XM5')">
+                    Ver detalles
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="imagenes/AirProds Pro.jpg" alt="">
+                <h3>AirPods Pro</h3>
+                <p>Audio espacial y cancelación de ruido</p>
+                <h4>$249.99</h4>
+                <button onclick="mostrarProducto('AirPods Pro')">
+                    Ver detalles
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="imagenes/oferta.jpg" alt="">
+                <h3>JBL Wave Beam</h3>
+                <p>Audífonos inalámbricos TWS</p>
+                <h4>$220.00</h4>
+                <button onclick="mostrarProducto('JBL Wave Beam')">
+                    Ver detalles
+                </button>
+            </div>
+
+            <div class="card">
+                <img src="imagenes/mouse-gamer.jpg" alt="">
+                <h3>Logitech G502</h3>
+                <p>Mouse gamer RGB</p>
+                <h4>$89.99</h4>
+                <button onclick="mostrarProducto('Logitech G502')">
+                    Ver detalles
+                </button>
+            </div>
+
+        </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="cerrar" onclick="cerrarModal()">&times;</span>
+            <h2 id="titulo"></h2>
+            <p>Consulta las características completas de este producto.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

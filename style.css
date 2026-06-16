@@ -188,3 +188,163 @@ button:hover{
     border:1px solid #ccc;
     border-radius:6px;
 }
+
+/* ADMINISTRADOR */
+
+.admin-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.admin-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.btn-agregar{
+    width:auto;
+    padding:12px 20px;
+}
+
+.tabla-productos{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.tabla-productos th,
+.tabla-productos td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+.tabla-productos th{
+    background:#f4f6f9;
+}
+
+.tabla-productos img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:15px;
+}
+
+.form-grid input,
+.form-grid select{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.admin-card textarea{
+    width:100%;
+    height:120px;
+    margin-top:15px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.acciones-form{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.btn-editar{
+    background:#2563EB;
+    width:auto;
+    padding:8px 12px;
+}
+
+.btn-eliminar{
+    background:#dc2626;
+    width:auto;
+    padding:8px 12px;
+}
+
+.btn-cancelar{
+    background:#9ca3af;
+    width:auto;
+    padding:10px 15px;
+}
+
+.btn-guardar{
+    background:#2563EB;
+    width:auto;
+    padding:10px 15px;
+}
+
+/* MODALES */
+
+.modal-admin{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:999;
+}
+
+.modal-admin:target{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-box{
+    background:white;
+    width:500px;
+    padding:25px;
+    border-radius:12px;
+    position:relative;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.modal-box input,
+.modal-box select,
+.modal-box textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.modal-box textarea{
+    height:120px;
+    resize:none;
+}
+
+.cerrar{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:28px;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+
+.cerrar:hover{
+    color:red;
+}
