@@ -120,6 +120,8 @@ body{
     box-shadow:0 2px 8px rgba(0,0,0,0.1);
     text-align:center;
     transition:0.3s;
+    height: 100%;
+    position: relative;
 }
 
 .card:hover{
@@ -144,6 +146,10 @@ body{
 .card h4{
     color:#2563EB;
     margin:10px 0;
+}
+
+.btn-detalle{
+    margin-top: auto;
 }
 
 
