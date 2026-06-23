@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador | RYC Tech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>RYC Tech</h2>
+
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="tecnologia.html">Tecnología</a></li>
+            <li><a href="accesorios.html">Accesorios</a></li>
+            <li><a href="ofertas.html">Ofertas</a></li>
+            <li><a href="admin.html">Administrador</a></li>
+        </ul>
+
+        <div class="oferta">
+            <h3>PANEL ADMIN</h3>
+            <p>Gestión del catálogo</p>
+        </div>
+
+    </div>
+
+    <div class="contenido">
+
+        <div class="admin-header">
+            <h1>Panel de Administración</h1>
+
+            <a href="#modalAgregar" class="btn-agregar">
+                + Agregar Producto
+            </a>        
+        </div>
+
+        <div class="admin-card">
+            <h2>Gestión de Productos</h2>
+            <p>Administra el catálogo de productos de la tienda.</p>
+        </div>
+
+        <div class="admin-card">
+
+        <h2>Productos Registrados</h2>
+
+        <table class="tabla-productos">
+
+            <tr>
+                <th>ID</th>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td><img src="imagenes/Samsung Galaxy S24.jpg"></td>
+                <td>Samsung Galaxy S24</td>
+                <td>Tecnología</td>
+                <td>$899.99</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td><img src="imagenes/MacBook Air Apple.webp"></td>
+                <td>MacBook Air M2</td>
+                <td>Tecnología</td>
+                <td>$1,199.00</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td><img src="imagenes/Sony WH.jpg"></td>
+                <td>Sony WH-1000XM5</td>
+                <td>Accesorios</td>
+                <td>$349.99</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td><img src="imagenes/Apple Watch.jpg"></td>
+                <td>Apple Watch Series 9</td>
+                <td>Tecnología</td>
+                <td>$399.00</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td><img src="imagenes/Apple iPad Air.jpg"></td>
+                <td>iPad Air</td>
+                <td>Tecnología</td>
+                <td>$599.99</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td><img src="imagenes/AirProds Pro.jpg"></td>
+                <td>AirPods Pro</td>
+                <td>Accesorios</td>
+                <td>$249.99</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td><img src="imagenes/oferta.jpg"></td>
+                <td>JBL Wave Beam</td>
+                <td>Accesorios</td>
+                <td>$220.00</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td><img src="imagenes/Nintendo Switch.jpg"></td>
+                <td>Nintendo Switch 2</td>
+                <td>Tecnología</td>
+                <td>$220.00</td>
+                <td>
+                    <a href="#modalEditar" class="btn-editar">Editar</a>
+                    <a href="#modalEliminar" class="btn-eliminar">Eliminar</a>
+                </td>
+            </tr>
+
+        </table>
+        </div>
+
+    </div>
+<!-- MODAL AGREGAR -->
+
+<div id="modalAgregar" class="modal-admin">
+
+    <div class="modal-box">
+
+        <a href="#" class="cerrar">&times;</a>
+
+        <h2>Agregar Producto</h2>
+
+        <input type="text" placeholder="Nombre del producto">
+
+        <select>
+            <option>Tecnología</option>
+            <option>Accesorios</option>
+        </select>
+
+        <input type="number" placeholder="Precio">
+
+        <textarea placeholder="Descripción"></textarea>
+
+        <input type="file">
+
+        <button class="btn-guardar">
+            Guardar Producto
+        </button>
+
+    </div>
+
+</div>
+
+<!-- MODAL EDITAR -->
+
+<div id="modalEditar" class="modal-admin">
+
+    <div class="modal-box">
+
+        <a href="#" class="cerrar">&times;</a>
+
+        <h2>Editar Producto</h2>
+
+        <input type="text" value="Samsung Galaxy S24">
+
+        <select>
+            <option>Tecnología</option>
+            <option>Accesorios</option>
+        </select>
+
+        <input type="number" value="899.99">
+
+        <textarea>Smartphone 5G, 256GB, 8GB RAM</textarea>
+
+        <button class="btn-guardar">
+            Guardar Cambios
+        </button>
+
+    </div>
+
+</div>
+
+<!-- MODAL ELIMINAR -->
+
+<div id="modalEliminar" class="modal-admin">
+
+    <div class="modal-box">
+
+        <a href="#" class="cerrar">&times;</a>
+
+        <h2>Eliminar Producto</h2>
+
+        <p>¿Desea eliminar este producto del catálogo?</p>
+
+        <div class="acciones-form">
+
+            <a href="#" class="btn-cancelar">
+                Cancelar
+            </a>
+
+            <a href="#" class="btn-eliminar">
+                Confirmar Eliminación
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+
+</html>
