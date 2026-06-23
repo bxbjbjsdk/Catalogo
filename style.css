@@ -122,6 +122,8 @@ body{
     transition:0.3s;
     height: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover{
@@ -149,7 +151,7 @@ body{
 }
 
 .btn-detalle{
-    margin-top: auto;
+    margin-top: auto;  
 }
 
 
