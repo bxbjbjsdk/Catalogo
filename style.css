@@ -43,6 +43,12 @@ body{
     background:#2563EB;
 }
 
+.oferta_enlace{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .oferta{
     margin-top:30px;
     background:#1d4ed8;
