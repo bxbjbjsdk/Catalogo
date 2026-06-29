@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dell\\Desktop\\Visual studio\\Catalogo\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj": {}
+    "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dell\\Desktop\\Visual studio\\Catalogo\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj": {
+    "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dell\\Desktop\\Visual studio\\Catalogo\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
+        "projectUniqueName": "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
         "projectName": "RYCTech.Api",
-        "projectPath": "C:\\Users\\dell\\Desktop\\Visual studio\\Catalogo\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
-        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dell\\Desktop\\Visual studio\\Catalogo\\Catalogo\\Backend\\RYCTech.Api\\obj\\",
+        "projectPath": "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
+        "packagesPath": "C:\\Users\\misio\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\misio\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
