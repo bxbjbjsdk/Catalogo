@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin | RYC Tech</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <div class="logo-icono"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+            <span>RYC Tech</span>
+        </div>
+        <div class="sidebar-seccion">Catalogo</div>
+        <ul>
+            <li><a href="index.html"><i class="ti ti-home" aria-hidden="true"></i> Inicio</a></li>
+            <li><a href="tecnologia.html"><i class="ti ti-device-laptop" aria-hidden="true"></i> Tecnologia</a></li>
+            <li><a href="accesorios.html"><i class="ti ti-headphones" aria-hidden="true"></i> Accesorios</a></li>
+            <li><a href="ofertas.html"><i class="ti ti-tag" aria-hidden="true"></i> Ofertas</a></li>
+        </ul>
+        <div class="sidebar-seccion">Gestion</div>
+        <ul>
+            <li><a href="admin.html" class="activo"><i class="ti ti-settings" aria-hidden="true"></i> Panel admin</a></li>
+        </ul>
+    </div>
+
+    <div class="contenido">
+
+        <div class="admin-encabezado">
+            <div>
+                <h1>Panel de administracion</h1>
+                <p id="infoSesion">Cargando sesion...</p>
+            </div>
+            <button class="btn-login" id="btnLogin">
+                <i class="ti ti-lock" aria-hidden="true"></i> Iniciar sesion
+            </button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-tarjeta">
+                <i class="ti ti-package" aria-hidden="true"></i>
+                <div class="stat-valor" id="statProductos">0</div>
+                <div class="stat-etiqueta">Productos</div>
+            </div>
+            <div class="stat-tarjeta">
+                <i class="ti ti-category" aria-hidden="true"></i>
+                <div class="stat-valor" id="statCategorias">0</div>
+                <div class="stat-etiqueta">Categorias</div>
+            </div>
+            <div class="stat-tarjeta">
+                <i class="ti ti-users" aria-hidden="true"></i>
+                <div class="stat-valor" id="statUsuarios">0</div>
+                <div class="stat-etiqueta">Empleados</div>
+            </div>
+            <div class="stat-tarjeta">
+                <i class="ti ti-tag" aria-hidden="true"></i>
+                <div class="stat-valor" id="statOfertas">0</div>
+                <div class="stat-etiqueta">En oferta</div>
+            </div>
+        </div>
+
+        <div class="admin-pestanas">
+            <button class="pestana-btn activo" data-pestana="tabProductos">
+                <i class="ti ti-package" aria-hidden="true"></i> Productos
+            </button>
+            <button class="pestana-btn" data-pestana="tabCategorias">
+                <i class="ti ti-category" aria-hidden="true"></i> Categorias
+            </button>
+            <button class="pestana-btn" data-pestana="tabEmpleados">
+                <i class="ti ti-users" aria-hidden="true"></i> Empleados
+            </button>
+        </div>
+
+        <!-- PESTANA: PRODUCTOS -->
+        <div class="pestana-contenido activo" id="tabProductos">
+            <div class="admin-tarjeta">
+                <div class="admin-tarjeta-header">
+                    <h2>Productos registrados</h2>
+                    <button class="btn-primario" onclick="abrirFormAgregarProducto()">
+                        <i class="ti ti-plus" aria-hidden="true"></i> Agregar producto
+                    </button>
+                </div>
+
+                <!-- Buscador de productos -->
+                <div style="position:relative; margin-bottom:16px;">
+                    <i class="ti ti-search" aria-hidden="true"
+                       style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#94a3b8; font-size:15px;"></i>
+                    <input type="text" id="buscadorAdmin"
+                           placeholder="Buscar por nombre, categoria o precio..."
+                           style="width:100%; padding:10px 14px 10px 38px; border:1px solid #e2e8f0;
+                                  border-radius:8px; font-size:13px; background:#F4F6F9;
+                                  font-family:Arial,sans-serif; color:#1e293b;">
+                </div>
+
+                <div class="tabla-contenedor">
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Categoria</th>
+                                <th>Precio</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaProductosCuerpo"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTANA: CATEGORIAS -->
+        <div class="pestana-contenido" id="tabCategorias">
+            <div class="admin-tarjeta">
+                <div class="admin-tarjeta-header"><h2>Categorias</h2></div>
+                <div style="display:flex; gap:10px; margin-bottom:20px;">
+                    <input type="text" id="nuevaCategoria" placeholder="Nombre de la nueva categoria"
+                           style="flex:1; padding:10px 12px; border:1px solid #e2e8f0; border-radius:6px; font-size:13px; background:#F4F6F9; font-family:Arial,sans-serif;">
+                    <button class="btn-primario" onclick="agregarCategoria()">
+                        <i class="ti ti-plus" aria-hidden="true"></i> Agregar
+                    </button>
+                </div>
+                <div id="listaCategorias"></div>
+            </div>
+        </div>
+
+        <!-- PESTANA: EMPLEADOS -->
+        <div class="pestana-contenido" id="tabEmpleados">
+            <div class="admin-tarjeta">
+                <div class="admin-tarjeta-header">
+                    <h2>Empleados</h2>
+                    <button class="btn-primario" onclick="abrirFormAgregarUsuario()">
+                        <i class="ti ti-plus" aria-hidden="true"></i> Agregar empleado
+                    </button>
+                </div>
+                <div class="tabla-contenedor">
+                    <table class="tabla">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaUsuariosCuerpo"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL: Login -->
+    <div class="modal-fondo" id="modalLogin">
+        <div class="modal-caja">
+            <div class="login-encabezado">
+                <div class="login-encabezado-icono"><i class="ti ti-lock" aria-hidden="true"></i></div>
+                <h2>Acceso empleados</h2>
+                <p>Solo personal autorizado de RYC Tech</p>
+            </div>
+            <div class="login-cuerpo">
+                <div class="form-grupo">
+                    <label for="loginCorreo">Correo electronico</label>
+                    <input type="email" id="loginCorreo" placeholder="correo@ryctech.com">
+                </div>
+                <div class="form-grupo">
+                    <label for="loginPassword">Contrasena</label>
+                    <input type="password" id="loginPassword" placeholder="Contrasena">
+                </div>
+                <div class="form-acciones" style="justify-content:space-between; align-items:center;">
+                    <button class="btn-secundario" onclick="cerrarModal('modalLogin')">Cancelar</button>
+                    <button class="btn-primario" onclick="iniciarSesion()">Iniciar sesion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Agregar / Editar producto -->
+    <div class="modal-fondo" id="modalFormProducto">
+        <div class="modal-caja" style="max-width:520px;">
+            <div class="modal-encabezado">
+                <h2 id="formProductoTitulo">Agregar producto</h2>
+                <button class="btn-cerrar-modal" onclick="cerrarModal('modalFormProducto')">
+                    <i class="ti ti-x" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-cuerpo">
+
+                <div class="form-grupo">
+                    <label for="fpNombre">Nombre del producto</label>
+                    <input type="text" id="fpNombre" placeholder="Ej. Samsung Galaxy S24">
+                </div>
+
+                <div class="form-fila">
+                    <div class="form-grupo">
+                        <label for="fpCategoria">Categoria</label>
+                        <select id="fpCategoria">
+                            <option value="">Seleccionar...</option>
+                            <option value="Tecnologia">Tecnologia</option>
+                            <option value="Accesorios">Accesorios</option>
+                        </select>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="fpPrecio">Precio (USD)</label>
+                        <input type="number" id="fpPrecio" placeholder="0.00" step="0.01" min="0">
+                    </div>
+                </div>
+
+                <!-- Campos de oferta -->
+                <div class="form-fila">
+                    <div class="form-grupo">
+                        <label for="fpPrecioOriginal">Precio original (solo si esta en oferta)</label>
+                        <input type="number" id="fpPrecioOriginal" placeholder="Dejar vacio si no hay oferta" step="0.01" min="0">
+                    </div>
+                    <div class="form-grupo">
+                        <label for="fpBadge">Etiqueta</label>
+                        <select id="fpBadge">
+                            <option value="">Sin etiqueta</option>
+                            <option value="nuevo">Nuevo</option>
+                            <option value="oferta">Oferta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="fpDescripcion">Descripcion</label>
+                    <textarea id="fpDescripcion" placeholder="Descripcion del producto..."></textarea>
+                </div>
+
+                <!-- Subida de imagen -->
+                <div class="form-grupo">
+                    <label for="fpImagen">Imagen del producto</label>
+                    <!-- El empleado solo selecciona el archivo desde su computadora -->
+                    <input type="file" id="fpImagen" accept="image/*"
+                           onchange="previsualizarImagen(this)"
+                           style="width:100%; padding:8px 12px; border:1px solid #e2e8f0; border-radius:6px;
+                                  font-size:13px; background:#F4F6F9; cursor:pointer;">
+                    <!-- Campo oculto para guardar el nombre de imagen actual al editar -->
+                    <input type="hidden" id="fpImagenActual">
+                    <!-- Vista previa de la imagen seleccionada -->
+                    <img id="imagenPreview" src="" alt="Vista previa"
+                         style="display:none; width:100%; max-height:150px; object-fit:contain;
+                                background:#f8fafc; border-radius:6px; margin-top:8px; padding:8px;">
+                </div>
+
+                <div class="form-acciones">
+                    <button class="btn-secundario" onclick="cerrarModal('modalFormProducto')">Cancelar</button>
+                    <button class="btn-primario" onclick="guardarProducto()">Guardar producto</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Confirmar eliminacion -->
+    <div class="modal-fondo" id="modalConfirmarEliminar">
+        <div class="modal-caja" style="max-width:380px;">
+            <div class="modal-encabezado">
+                <h2>Eliminar producto</h2>
+                <button class="btn-cerrar-modal" onclick="cerrarModal('modalConfirmarEliminar')">
+                    <i class="ti ti-x" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-cuerpo">
+                <p style="color:#64748b; font-size:13px; margin-bottom:6px;">Estas a punto de eliminar:</p>
+                <p style="font-weight:bold; color:#0f172a; font-size:14px; margin-bottom:16px;" id="confirmarEliminarNombre"></p>
+                <p style="color:#64748b; font-size:13px; margin-bottom:20px;">Esta accion no se puede deshacer.</p>
+                <div class="form-acciones">
+                    <button class="btn-secundario" onclick="cerrarModal('modalConfirmarEliminar')">Cancelar</button>
+                    <button class="btn-peligro" id="btnConfirmarEliminar" style="padding:10px 18px; font-size:13px;">
+                        Si, eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Agregar / Editar empleado -->
+    <div class="modal-fondo" id="modalFormUsuario">
+        <div class="modal-caja" style="max-width:440px;">
+            <div class="modal-encabezado">
+                <h2 id="formUsuarioTitulo">Agregar empleado</h2>
+                <button class="btn-cerrar-modal" onclick="cerrarModal('modalFormUsuario')">
+                    <i class="ti ti-x" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-cuerpo">
+                <div class="form-grupo">
+                    <label for="fuNombre">Nombre completo</label>
+                    <input type="text" id="fuNombre" placeholder="Nombre del empleado">
+                </div>
+                <div class="form-grupo">
+                    <label for="fuCorreo">Correo electronico</label>
+                    <input type="email" id="fuCorreo" placeholder="correo@ryctech.com">
+                </div>
+                <div class="form-grupo">
+                    <label for="fuRol">Rol</label>
+                    <select id="fuRol">
+                        <option value="Empleado">Empleado</option>
+                        <option value="Administrador">Administrador</option>
+                    </select>
+                </div>
+                <div class="form-grupo">
+                    <label for="fuPassword">
+                        Contrasena
+                        <span style="color:#94a3b8; font-weight:normal;">(dejar vacio para no cambiar)</span>
+                    </label>
+                    <input type="password" id="fuPassword" placeholder="Contrasena">
+                </div>
+                <div class="form-acciones">
+                    <button class="btn-secundario" onclick="cerrarModal('modalFormUsuario')">Cancelar</button>
+                    <button class="btn-primario" onclick="guardarUsuario()">Guardar empleado</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/admin.js"></script>
+
+</body>
+</html>
