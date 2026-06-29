@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zjF9sYmzlzY=",
+  "dgSpecHash": "Itt56srhUkc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\RodrigoDanielHurtado\\OneDrive\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
+  "projectFilePath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RodrigoDanielHurtado\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
     "C:\\Users\\RodrigoDanielHurtado\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.13\\microsoft.bcl.cryptography.9.0.13.nupkg.sha512",
