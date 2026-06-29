@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\bin\Debug\net10.0\RYCTech.Api.staticwebassets.endpoints.json
 C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\bin\Debug\net10.0\RYCTech.Api.exe
 C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\bin\Debug\net10.0\RYCTech.Api.deps.json
@@ -61,6 +62,8 @@ C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\
 C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\obj\Debug\net10.0\RYCTech.Api.pdb
 C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\obj\Debug\net10.0\RYCTech.Api.genruntimeconfig.cache
 C:\Users\RodrigoDanielHurtado\Downloads\RYCTech_v2_Completo\Backend\RYCTech.Api\obj\Debug\net10.0\ref\RYCTech.Api.dll
+=======
+>>>>>>> 8c13c2b (Rediseno completo: nuevo frontend, backend con API REST, panel admin con buscador y subida de imagenes)
 C:\Users\RodrigoDanielHurtado\OneDrive\Catalogo\Backend\RYCTech.Api\bin\Debug\net10.0\RYCTech.Api.staticwebassets.endpoints.json
 C:\Users\RodrigoDanielHurtado\OneDrive\Catalogo\Backend\RYCTech.Api\bin\Debug\net10.0\RYCTech.Api.exe
 C:\Users\RodrigoDanielHurtado\OneDrive\Catalogo\Backend\RYCTech.Api\bin\Debug\net10.0\RYCTech.Api.deps.json
