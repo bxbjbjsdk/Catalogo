@@ -42,6 +42,8 @@ public class Usuario
 }
 
 // DTO actualizado con PrecioOriginal y Badge
+public record EspecificacionDTO(string Clave, string Valor);
+
 public record ProductoDTO(
     string   Nombre,
     string   Categoria,
@@ -49,7 +51,8 @@ public record ProductoDTO(
     decimal? PrecioOriginal,
     string?  Badge,
     string   Descripcion,
-    string   Imagen
+    string   Imagen,
+    List<EspecificacionDTO>? Specs
 );
 
 public record LoginDTO(
