@@ -1,11 +1,4 @@
-// ================================================
-// ConexionDB.cs
-// Esta clase maneja la conexion a SQL Server.
-// Sigue el mismo patron que tu proyecto de formulario.
-//
-// IMPORTANTE: Cambia la cadena de conexion con el
-// nombre de tu servidor SQL Server antes de correr.
-// ================================================
+
 
 using Microsoft.Data.SqlClient;
 

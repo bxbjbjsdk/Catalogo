@@ -15,7 +15,7 @@
 
 /* --- FUENTE Y FONDO ------------------------------ */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     background-color: #F4F6F9;
     color: #1e293b;
     display: flex;
@@ -713,7 +713,7 @@ a {
     font-size: 13px;
     color: #1e293b;
     transition: border-color 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .form-grupo input:focus,
@@ -762,7 +762,7 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .btn-primario:hover {
@@ -778,7 +778,7 @@ a {
     font-size: 13px;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .btn-secundario:hover {
@@ -796,7 +796,7 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .btn-peligro:hover {
@@ -814,7 +814,7 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
 }
 
 .btn-editar:hover {
@@ -948,7 +948,7 @@ a {
     background-color: transparent;
     border: none;
     transition: all 0.2s;
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
