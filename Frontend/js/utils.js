@@ -7,7 +7,7 @@
 
 // URL del backend — apunta a tu IP en red local
 // Si cambias de red, actualiza esta IP
-const URL_BACKEND = 'http://172.18.9.152:5000/api';
+const URL_BACKEND = `http://${window.location.hostname}:5000/api`;
 
 /* ------------------------------------------------
    ABRIR MODAL
