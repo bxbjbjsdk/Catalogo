@@ -88,7 +88,7 @@
                 <div style="position:relative; margin-bottom:16px;">
                     <i class="ti ti-search" aria-hidden="true"
                        style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:#94a3b8; font-size:15px;"></i>
-                    <input type="text" id="buscadorAdmin"
+                    <input type="search" id="buscadorAdmin" autocomplete="off"
                            placeholder="Buscar por nombre, categoria o precio..."
                            style="width:100%; padding:10px 14px 10px 38px; border:1px solid #e2e8f0;
                                   border-radius:8px; font-size:13px; background:#F4F6F9;
@@ -247,6 +247,19 @@
                     <img id="imagenPreview" src="" alt="Vista previa"
                          style="display:none; width:100%; max-height:150px; object-fit:contain;
                                 background:#f8fafc; border-radius:6px; margin-top:8px; padding:8px;">
+                </div>
+
+                <!-- Especificaciones tecnicas -->
+                <div style="margin-top:18px;">
+                    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                        <label style="font-size:11px; font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; color:#64748b;">
+                            Especificaciones tecnicas
+                        </label>
+                        <button type="button" class="btn-editar" onclick="agregarFilaSpec()" style="font-size:11px; padding:5px 10px;">
+                            + Agregar
+                        </button>
+                    </div>
+                    <div id="specsContainer"></div>
                 </div>
 
                 <div class="form-acciones">

@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "2V1L9sBsra8=",
+  "dgSpecHash": "YEVkr00s+CA=",
   "success": true,
   "projectFilePath": "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\misio\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
     "C:\\Users\\misio\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.13\\microsoft.bcl.cryptography.9.0.13.nupkg.sha512",
-    "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient\\7.0.1\\microsoft.data.sqlclient.7.0.1.nupkg.sha512",
-    "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient.extensions.abstractions\\1.0.0\\microsoft.data.sqlclient.extensions.abstractions.1.0.0.nupkg.sha512",
-    "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient.internal.logging\\1.0.0\\microsoft.data.sqlclient.internal.logging.1.0.0.nupkg.sha512",
+    "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient\\7.0.2\\microsoft.data.sqlclient.7.0.2.nupkg.sha512",
+    "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient.extensions.abstractions\\7.0.2\\microsoft.data.sqlclient.extensions.abstractions.7.0.2.nupkg.sha512",
+    "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient.internal.logging\\7.0.2\\microsoft.data.sqlclient.internal.logging.7.0.2.nupkg.sha512",
     "C:\\Users\\misio\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\6.0.2\\microsoft.data.sqlclient.sni.runtime.6.0.2.nupkg.sha512",
     "C:\\Users\\misio\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.16.0\\microsoft.identitymodel.abstractions.8.16.0.nupkg.sha512",
     "C:\\Users\\misio\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.16.0\\microsoft.identitymodel.jsonwebtokens.8.16.0.nupkg.sha512",
@@ -23,5 +23,18 @@
     "C:\\Users\\misio\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.13\\system.security.cryptography.pkcs.9.0.13.nupkg.sha512",
     "C:\\Users\\misio\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.13\\system.security.cryptography.protecteddata.9.0.13.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "El paquete \"Microsoft.OpenApi\" 2.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\misio\\Desktop\\Visual Studio Code\\3E\\prueba\\Prueba\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

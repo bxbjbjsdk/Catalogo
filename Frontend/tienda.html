@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Tienda | RYC Tech</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,10 +24,12 @@
             <li><a href="accesorios.html"><i class="ti ti-headphones" aria-hidden="true"></i> Accesorios</a></li>
             <li><a href="ofertas.html"><i class="ti ti-tag" aria-hidden="true"></i> Ofertas</a></li>
         </ul>
-        <div class="sidebar-seccion">Gestion</div>
-        <ul>
-            <li><a href="admin.html"><i class="ti ti-settings" aria-hidden="true"></i> Panel admin</a></li>
-        </ul>
+        <div id="seccionGestion" style="display:none;">
+            <div class="sidebar-seccion">Gestion</div>
+            <ul>
+                <li><a href="admin.html"><i class="ti ti-settings" aria-hidden="true"></i> Panel admin</a></li>
+            </ul>
+        </div>
         <div class="sidebar-seccion">Informacion</div>
         <ul>
             <li><a href="tienda.html" class="activo"><i class="ti ti-building-store" aria-hidden="true"></i> La tienda</a></li>
@@ -36,7 +41,7 @@
         <div class="topbar">
             <div class="topbar-busqueda">
                 <i class="ti ti-search" aria-hidden="true"></i>
-                <input type="text" id="inputBuscar" placeholder="Buscar...">
+                <input type="search" id="inputBuscar" autocomplete="off" placeholder="Buscar...">
             </div>
             <button class="btn-login" id="btnLogin" onclick="abrirModal('modalLogin')">
                 <i class="ti ti-lock" aria-hidden="true"></i> Iniciar sesion
@@ -94,7 +99,7 @@
                 <h3>Contacto</h3>
                 <p>
                     Telefono: <a href="tel:+528991234567">(899) 123-4567</a><br>
-                    WhatsApp: <a href="#">(899) 123-4567</a><br>
+                    WhatsApp: <a href="https://wa.me/528995062483?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" rel="noopener noreferrer">(899) 506-2483</a><br>
                     Email: <a href="mailto:contacto@ryctech.com">contacto@ryctech.com</a>
                 </p>
             </div>
@@ -126,6 +131,13 @@
         </div>
 
     </div>
+
+    <a href="https://wa.me/528995062483?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos."
+       target="_blank" rel="noopener noreferrer"
+       title="Contactanos por WhatsApp"
+       style="position:fixed; bottom:24px; right:24px; width:56px; height:56px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(0,0,0,.25); z-index:999; text-decoration:none;">
+        <i class="ti ti-brand-whatsapp" style="font-size:28px; color:white;" aria-hidden="true"></i>
+    </a>
 
     <div class="modal-fondo" id="modalLogin">
         <div class="modal-caja">

@@ -4,6 +4,9 @@
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofertas | RYC Tech</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,12 +21,14 @@
         </ul>
         <div class="sidebar-seccion">Informacion</div>
         <ul><li><a href="tienda.html"><i class="ti ti-building-store" aria-hidden="true"></i> La tienda</a></li></ul>
-        <div class="sidebar-seccion">Gestion</div>
-        <ul><li><a href="admin.html"><i class="ti ti-settings" aria-hidden="true"></i> Panel admin</a></li></ul>
+        <div id="seccionGestion" style="display:none;">
+            <div class="sidebar-seccion">Gestion</div>
+            <ul><li><a href="admin.html"><i class="ti ti-settings" aria-hidden="true"></i> Panel admin</a></li></ul>
+        </div>
     </div>
     <div class="contenido">
         <div class="topbar">
-            <div class="topbar-busqueda"><i class="ti ti-search" aria-hidden="true"></i><input type="text" id="inputBuscar" placeholder="Buscar ofertas..."></div>
+            <div class="topbar-busqueda"><i class="ti ti-search" aria-hidden="true"></i><input type="search" id="inputBuscar" autocomplete="off" placeholder="Buscar ofertas..."></div>
             <button class="btn-login" id="btnLogin" onclick="abrirModal('modalLogin')"><i class="ti ti-lock" aria-hidden="true"></i> Iniciar sesion</button>
         </div>
         <div class="hero" style="padding:28px 36px;margin-bottom:24px;background:linear-gradient(110deg,#1a0a0a,#7f1d1d,#1a0a2e);">

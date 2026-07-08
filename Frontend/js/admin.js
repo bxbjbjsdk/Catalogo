@@ -142,6 +142,7 @@ function abrirFormAgregarProducto() {
     document.getElementById('fpBadge').value     = '';
     const preview = document.getElementById('imagenPreview');
     preview.src   = ''; preview.style.display = 'none';
+    limpiarSpecs();
     document.getElementById('formProductoTitulo').textContent = 'Agregar producto';
     abrirModal('modalFormProducto');
 }
@@ -163,7 +164,13 @@ async function abrirFormEditarProducto(id) {
         document.getElementById('fpImagenActual').value   = p.imagen;
 
         const preview = document.getElementById('imagenPreview');
-        preview.src   = p.imagen; preview.style.display = 'block';
+        preview.src   = `imagenes/${p.imagen}`; preview.style.display = 'block';
+
+        // Cargar especificaciones existentes en el formulario
+        limpiarSpecs();
+        if (p.specs && p.specs.length > 0) {
+            p.specs.forEach(s => agregarFilaSpec(s.clave, s.valor));
+        }
 
         document.getElementById('formProductoTitulo').textContent = 'Editar producto';
         abrirModal('modalFormProducto');
@@ -209,7 +216,8 @@ async function guardarProducto() {
             precioOriginal: precioOriginal ? parseFloat(precioOriginal) : null,
             badge:          badge || null,
             descripcion,
-            imagen:         nombreImagen
+            imagen:         nombreImagen,
+            specs:          obtenerSpecsDelFormulario()
         };
 
         const url    = idProductoEditando ? `${URL_BACKEND}/productos/${idProductoEditando}` : `${URL_BACKEND}/productos`;
@@ -408,3 +416,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const info   = document.getElementById('infoSesion');
     if (sesion && info) info.textContent = `Sesion activa: ${sesion.nombre} (${sesion.rol})`;
 });
+
+/* ================================================
+   ESPECIFICACIONES TECNICAS
+   ================================================ */
+
+// Agrega una fila de clave/valor al formulario
+function agregarFilaSpec(clave = '', valor = '') {
+    const container = document.getElementById('specsContainer');
+    if (!container) return;
+
+    const fila = document.createElement('div');
+    fila.className = 'spec-fila';
+    fila.style.cssText = 'display:flex; gap:8px; margin-bottom:8px; align-items:center;';
+    fila.innerHTML = `
+        <input type="text" placeholder="Clave (ej. RAM)" value="${clave}"
+               style="flex:1; padding:8px 10px; border:1px solid #e2e8f0; border-radius:6px;
+                      font-size:13px; background:#F4F6F9; font-family:Arial,sans-serif;"
+               class="spec-clave">
+        <input type="text" placeholder="Valor (ej. 8 GB)" value="${valor}"
+               style="flex:1; padding:8px 10px; border:1px solid #e2e8f0; border-radius:6px;
+                      font-size:13px; background:#F4F6F9; font-family:Arial,sans-serif;"
+               class="spec-valor">
+        <button type="button" class="btn-peligro" onclick="this.parentElement.remove()"
+                style="padding:6px 10px; flex-shrink:0;">
+            <i class="ti ti-trash" aria-hidden="true"></i>
+        </button>
+    `;
+    container.appendChild(fila);
+}
+
+// Obtiene las specs del formulario como arreglo
+function obtenerSpecsDelFormulario() {
+    const specs = [];
+    document.querySelectorAll('.spec-fila').forEach(fila => {
+        const clave = fila.querySelector('.spec-clave').value.trim();
+        const valor = fila.querySelector('.spec-valor').value.trim();
+        if (clave && valor) specs.push({ clave, valor });
+    });
+    return specs;
+}
+
+// Limpia las filas de specs
+function limpiarSpecs() {
+    const container = document.getElementById('specsContainer');
+    if (container) container.innerHTML = '';
+}

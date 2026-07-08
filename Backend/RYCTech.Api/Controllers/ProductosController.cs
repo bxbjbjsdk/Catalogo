@@ -128,7 +128,9 @@ public static class ProductosController
                 }
                 string query = @"
                     INSERT INTO Productos (Nombre, Descripcion, Precio, PrecioOriginal, Badge, Imagen, CategoriaId)
-                    VALUES (@Nombre, @Descripcion, @Precio, @PrecioOriginal, @Badge, @Imagen, @CategoriaId)";
+                    VALUES (@Nombre, @Descripcion, @Precio, @PrecioOriginal, @Badge, @Imagen, @CategoriaId);
+                    SELECT SCOPE_IDENTITY();";
+                int nuevoId = 0;
                 using (var comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.AddWithValue("@Nombre",         dto.Nombre);
@@ -138,7 +140,25 @@ public static class ProductosController
                     comando.Parameters.AddWithValue("@Badge",          (object?)dto.Badge ?? DBNull.Value);
                     comando.Parameters.AddWithValue("@Imagen",         dto.Imagen);
                     comando.Parameters.AddWithValue("@CategoriaId",    categoriaId);
-                    comando.ExecuteNonQuery();
+                    var resId = comando.ExecuteScalar();
+                    if (resId != null) nuevoId = Convert.ToInt32(resId);
+                }
+
+                // Guardar especificaciones tecnicas
+                if (dto.Specs != null && dto.Specs.Count > 0 && nuevoId > 0)
+                {
+                    foreach (var spec in dto.Specs)
+                    {
+                        using (var cmdSpec = new SqlCommand(
+                            "INSERT INTO ProductoEspecificaciones (ProductoId, Clave, Valor) VALUES (@ProductoId, @Clave, @Valor)",
+                            conexion))
+                        {
+                            cmdSpec.Parameters.AddWithValue("@ProductoId", nuevoId);
+                            cmdSpec.Parameters.AddWithValue("@Clave",      spec.Clave);
+                            cmdSpec.Parameters.AddWithValue("@Valor",      spec.Valor);
+                            cmdSpec.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
             return Results.Ok(new { mensaje = "Producto agregado correctamente." });
@@ -183,6 +203,30 @@ public static class ProductosController
                     comando.Parameters.AddWithValue("@Id",             id);
                     int filas = comando.ExecuteNonQuery();
                     if (filas == 0) return Results.NotFound(new { mensaje = "Producto no encontrado." });
+                }
+
+                // Actualizar especificaciones: borrar las viejas e insertar las nuevas
+                if (dto.Specs != null)
+                {
+                    using (var cmdDel = new SqlCommand(
+                        "DELETE FROM ProductoEspecificaciones WHERE ProductoId = @Id", conexion))
+                    {
+                        cmdDel.Parameters.AddWithValue("@Id", id);
+                        cmdDel.ExecuteNonQuery();
+                    }
+
+                    foreach (var spec in dto.Specs)
+                    {
+                        using (var cmdSpec = new SqlCommand(
+                            "INSERT INTO ProductoEspecificaciones (ProductoId, Clave, Valor) VALUES (@ProductoId, @Clave, @Valor)",
+                            conexion))
+                        {
+                            cmdSpec.Parameters.AddWithValue("@ProductoId", id);
+                            cmdSpec.Parameters.AddWithValue("@Clave",      spec.Clave);
+                            cmdSpec.Parameters.AddWithValue("@Valor",      spec.Valor);
+                            cmdSpec.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
             return Results.Ok(new { mensaje = "Producto actualizado correctamente." });
