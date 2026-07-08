@@ -87,6 +87,19 @@ function actualizarBotonLogin() {
         btn.innerHTML = '<i class="ti ti-lock" aria-hidden="true"></i> Iniciar sesion';
         btn.onclick = () => abrirModal('modalLogin');
     }
+
+    actualizarPanelAdmin();
+}
+
+/* ------------------------------------------------
+   MOSTRAR/OCULTAR "PANEL ADMIN" EN EL SIDEBAR
+   Solo visible si hay una sesion activa
+   ------------------------------------------------ */
+function actualizarPanelAdmin() {
+    const seccion = document.getElementById('seccionGestion');
+    if (!seccion) return;
+
+    seccion.style.display = haySesion() ? '' : 'none';
 }
 
 /* ------------------------------------------------
