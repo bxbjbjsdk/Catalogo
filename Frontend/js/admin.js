@@ -415,6 +415,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sesion = obtenerSesion();
     const info   = document.getElementById('infoSesion');
     if (sesion && info) info.textContent = `Sesion activa: ${sesion.nombre} (${sesion.rol})`;
+
+    // Restringir pestana Empleados si es rol Empleado
+    if (sesion && sesion.rol === 'Empleado') {
+        document.querySelector('[data-pestana="tabEmpleados"]').style.display = 'none';
+        document.getElementById('tabEmpleados').style.display = 'none';
+    }
 });
 
 /* ================================================

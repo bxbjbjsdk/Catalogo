@@ -86,7 +86,19 @@ public static class CategoriasController
         {
             using (var conexion = db.ObtenerConexion())
             {
-                string query = "UPDATE Categorias SET Activa = 0 WHERE Id = @Id";
+                // Verificar que no tenga productos
+                string queryVerificar = "SELECT COUNT(*) FROM Productos WHERE CategoriaId = @Id";
+                using (var cmdV = new SqlCommand(queryVerificar, conexion))
+                {
+                    cmdV.Parameters.AddWithValue("@Id", id);
+                    int total = (int)cmdV.ExecuteScalar();
+                    if (total > 0)
+                        return Results.BadRequest(new { mensaje = "No se puede eliminar porque tiene productos asociados." });
+                }
+
+                // Si no tiene productos eliminar
+                string query = "DELETE FROM Categorias WHERE Id = @Id";
+    
 
                 using (var comando = new SqlCommand(query, conexion))
                 {

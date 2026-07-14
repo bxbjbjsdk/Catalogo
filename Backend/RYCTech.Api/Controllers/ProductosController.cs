@@ -241,7 +241,7 @@ public static class ProductosController
             using (var conexion = db.ObtenerConexion())
             {
                 conexion.Open();
-                using (var comando = new SqlCommand("UPDATE Productos SET Activo = 0 WHERE Id = @Id", conexion))
+                using (var comando = new SqlCommand("DELETE FROM Productos WHERE Id = @Id", conexion))
                 {
                     comando.Parameters.AddWithValue("@Id", id);
                     int filas = comando.ExecuteNonQuery();

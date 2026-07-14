@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RYCTech.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1315c133a894418d6e91fdee8e6178ad5560aff2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b000b6d3bdbc6ed0d72cd4e84b676dcffadb47a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("RYCTech.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RYCTech.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

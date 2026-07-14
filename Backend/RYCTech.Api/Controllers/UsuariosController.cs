@@ -286,7 +286,7 @@ public static class UsuariosController
         {
             using (var conexion = db.ObtenerConexion())
             {
-                string query = "UPDATE Usuarios SET Activo = 0 WHERE Id = @Id";
+                string query = "DELETE FROM Usuarios WHERE Id = @Id";
 
                 using (var comando = new SqlCommand(query, conexion))
                 {
