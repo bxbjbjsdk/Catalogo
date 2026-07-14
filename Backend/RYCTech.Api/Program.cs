@@ -29,7 +29,5 @@ app.MapCategorias();
 app.MapEstadisticas();
 app.MapImagenes();
 
-// Correr en todas las interfaces de red para que otras
-// computadoras en la misma red puedan conectarse
-// Tu IP en la red es: 192.168.100.16
+
 app.Run("http://0.0.0.0:5000");
