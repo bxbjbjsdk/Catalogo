@@ -36,9 +36,7 @@ async function cargarEstadisticas() {
     } catch (e) { console.error(e.message); }
 }
 
-/* ================================================
-   BUSCADOR DE PRODUCTOS EN EL ADMIN
-   ================================================ */
+
 function iniciarBuscadorAdmin() {
     const input = document.getElementById('buscadorAdmin');
     if (!input) return;

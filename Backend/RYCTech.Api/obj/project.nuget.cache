@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c1SmjsKFdOk=",
+  "dgSpecHash": "U3xKKxeClKQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.APi\\RYCTech.Api.csproj",
+  "projectFilePath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RodrigoDanielHurtado\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
     "C:\\Users\\RodrigoDanielHurtado\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.13\\microsoft.bcl.cryptography.9.0.13.nupkg.sha512",
@@ -27,10 +27,10 @@
     {
       "code": "NU1903",
       "level": "Warning",
-      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.APi\\RYCTech.Api.csproj",
+      "message": "El paquete \"Microsoft.OpenApi\" 2.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.APi\\RYCTech.Api.csproj",
+      "filePath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"

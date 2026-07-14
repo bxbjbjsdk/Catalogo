@@ -850,11 +850,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.APi\\RYCTech.Api.csproj",
+      "projectUniqueName": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
       "projectName": "RYCTech.Api",
-      "projectPath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.APi\\RYCTech.Api.csproj",
+      "projectPath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\RYCTech.Api.csproj",
       "packagesPath": "C:\\Users\\RodrigoDanielHurtado\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.APi\\obj\\",
+      "outputPath": "C:\\Users\\RodrigoDanielHurtado\\Desktop\\Catalogo\\Backend\\RYCTech.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1346,7 +1346,7 @@
       "code": "NU1903",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "message": "El paquete \"Microsoft.OpenApi\" 2.0.0 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
