@@ -281,10 +281,12 @@
                 </button>
             </div>
             <div class="modal-cuerpo">
-                <p style="color:#64748b; font-size:13px; margin-bottom:6px;">Estas a punto de eliminar:</p>
-                <p style="font-weight:bold; color:#0f172a; font-size:14px; margin-bottom:16px;" id="confirmarEliminarNombre"></p>
-                <p style="color:#64748b; font-size:13px; margin-bottom:20px;">Esta accion no se puede deshacer.</p>
-                <div class="form-acciones">
+                <div style="display:flex; justify-content:center; margin-bottom:12px;">
+                    <i class="ti ti-alert-triangle" aria-hidden="true" style="font-size:38px; color:#dc2626;"></i>
+                </div>
+                <p style="color:#64748b; font-size:13px; margin-bottom:6px; text-align:center;">Estas a punto de eliminar:</p>
+                <p style="font-weight:bold; color:#0f172a; font-size:14px; margin-bottom:16px; text-align:center;" id="confirmarEliminarNombre"></p>
+                <p style="color:#64748b; font-size:13px; margin-bottom:20px; text-align:center;">Esta accion no se puede deshacer.</p>                <div class="form-acciones">
                     <button class="btn-secundario" onclick="cerrarModal('modalConfirmarEliminar')">Cancelar</button>
                     <button class="btn-peligro" id="btnConfirmarEliminar" style="padding:10px 18px; font-size:13px;">
                         Si, eliminar

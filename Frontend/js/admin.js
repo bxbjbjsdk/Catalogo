@@ -374,8 +374,9 @@ async function guardarUsuario() {
     const password = document.getElementById('fuPassword').value;
 
     if (!nombre || !correo || !rol) { mostrarNotificacion('Completa todos los campos.', 'error'); return; }
+    const formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formatoCorreo.test(correo)) { mostrarNotificacion('Ingresa un correo electronico valido.', 'error'); return; }
     if (!idUsuarioEditando && !password) { mostrarNotificacion('La contrasena es obligatoria.', 'error'); return; }
-
     try {
         const url    = idUsuarioEditando ? `${URL_BACKEND}/usuarios/${idUsuarioEditando}` : `${URL_BACKEND}/usuarios`;
         const metodo = idUsuarioEditando ? 'PUT' : 'POST';

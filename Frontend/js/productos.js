@@ -151,11 +151,43 @@ function iniciarBuscador() {
 
     inputBuscar.addEventListener('input', function () {
         const texto = this.value.toLowerCase().trim();
+        let visibles = 0;
+
         document.querySelectorAll('.tarjeta').forEach(tarjeta => {
             const contenido = tarjeta.innerText.toLowerCase();
-            tarjeta.style.display = contenido.includes(texto) ? '' : 'none';
+            const coincide  = contenido.includes(texto);
+            tarjeta.style.display = coincide ? '' : 'none';
+            if (coincide) visibles++;
         });
+
+        mostrarMensajeSinResultados(visibles === 0 && texto !== '');
     });
+}
+
+/* ------------------------------------------------
+   MENSAJE "NO SE ENCONTRARON PRODUCTOS"
+   ------------------------------------------------ */
+function mostrarMensajeSinResultados(mostrar) {
+    const grid = document.getElementById('productosGrid');
+    if (!grid) return;
+
+    let mensaje = document.getElementById('mensajeSinResultados');
+
+    if (mostrar) {
+        if (!mensaje) {
+            mensaje = document.createElement('div');
+            mensaje.id = 'mensajeSinResultados';
+            mensaje.className = 'estado-vacio';
+            mensaje.style.gridColumn = '1/-1';
+            mensaje.innerHTML = `
+                <i class="ti ti-search-off"></i>
+                <p>No se encontraron productos que coincidan con tu busqueda.</p>
+            `;
+            grid.appendChild(mensaje);
+        }
+    } else if (mensaje) {
+        mensaje.remove();
+    }
 }
 
 /* ------------------------------------------------
