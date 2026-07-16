@@ -335,6 +335,54 @@ a {
 }
 
 /* ================================================
+   PAGINACION
+   ================================================ */
+.paginacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.pagina-btn {
+    min-width: 34px;
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+    color: #64748b;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pagina-btn:hover:not(:disabled) {
+    border-color: #2563EB;
+    color: #2563EB;
+}
+
+.pagina-btn.activo {
+    background-color: #2563EB;
+    border-color: #2563EB;
+    color: white;
+    font-weight: bold;
+}
+
+.pagina-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.pagina-puntos {
+    color: #94a3b8;
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+/* ================================================
    TARJETA DE PRODUCTO
    ================================================ */
 .tarjeta {

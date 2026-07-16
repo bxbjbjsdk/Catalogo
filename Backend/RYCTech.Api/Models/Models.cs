@@ -35,10 +35,11 @@ public class Categoria
 
 public class Usuario
 {
-    public int    Id     { get; set; }
-    public string Nombre { get; set; } = "";
-    public string Correo { get; set; } = "";
-    public string Rol    { get; set; } = "";
+    public int    Id           { get; set; }
+    public string Nombre       { get; set; } = "";
+    public string Correo       { get; set; } = "";
+    public string Rol          { get; set; } = "";
+    public bool   EsPrincipal  { get; set; } = false; // true = administrador principal, no se puede eliminar
 }
 
 

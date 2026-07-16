@@ -7,6 +7,7 @@ public static class CategoriasController
     {
         app.MapGet("/api/categorias",          ObtenerTodas);
         app.MapPost("/api/categorias",         Agregar);
+        app.MapPut("/api/categorias/{id}",     Editar);
         app.MapDelete("/api/categorias/{id}",  Eliminar);
     }
 
@@ -83,6 +84,11 @@ public static class CategoriasController
         {
             using (var conexion = db.ObtenerConexion())
             {
+                // IMPORTANTE: la conexion se abre una sola vez, al inicio,
+                // antes de ejecutar cualquier consulta (antes se abria demasiado
+                // tarde y la primera consulta fallaba, por eso "eliminar" no funcionaba).
+                conexion.Open();
+
                 // Verificar que no tenga productos
                 string queryVerificar = "SELECT COUNT(*) FROM Productos WHERE CategoriaId = @Id";
                 using (var cmdV = new SqlCommand(queryVerificar, conexion))
@@ -95,18 +101,42 @@ public static class CategoriasController
 
                 // Si no tiene productos eliminar
                 string query = "DELETE FROM Categorias WHERE Id = @Id";
-    
 
                 using (var comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.AddWithValue("@Id", id);
-                    conexion.Open();
                     int filas = comando.ExecuteNonQuery();
                     if (filas == 0) return Results.NotFound(new { mensaje = "Categoria no encontrada." });
                 }
             }
 
             return Results.Ok(new { mensaje = "Categoria eliminada correctamente." });
+        }
+        catch (Exception ex)
+        {
+            return Results.Problem($"Error en el backend: {ex.Message}");
+        }
+    }
+
+    static IResult Editar(int id, CategoriaDTO dto, ConexionDB db)
+    {
+        try
+        {
+            using (var conexion = db.ObtenerConexion())
+            {
+                conexion.Open();
+
+                string query = "UPDATE Categorias SET Nombre = @Nombre WHERE Id = @Id";
+                using (var comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue("@Nombre", dto.Nombre);
+                    comando.Parameters.AddWithValue("@Id", id);
+                    int filas = comando.ExecuteNonQuery();
+                    if (filas == 0) return Results.NotFound(new { mensaje = "Categoria no encontrada." });
+                }
+            }
+
+            return Results.Ok(new { mensaje = "Categoria actualizada correctamente." });
         }
         catch (Exception ex)
         {

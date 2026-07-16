@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologia | RYC Tech</title>
+    <title>Categoria | RYC Tech</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +30,8 @@
             <div class="topbar-busqueda"><i class="ti ti-search" aria-hidden="true"></i><input type="search" id="inputBuscar" autocomplete="off" placeholder="Buscar productos..."></div>
             <button class="btn-login" id="btnLogin" onclick="abrirModal('modalLogin')"><i class="ti ti-lock" aria-hidden="true"></i> Iniciar sesion</button>
         </div>
-        <div class="hero" style="padding:28px 36px;margin-bottom:24px;"><div class="hero-etiqueta">Categoria</div><h1>Tecnologia</h1><p>Smartphones, laptops, tablets, consolas y mas.</p></div>
-        <div class="productos-grid" id="productosGrid" data-filtro="Tecnologia"></div>
+        <div class="hero" style="padding:28px 36px;margin-bottom:24px;"><div class="hero-etiqueta">Categoria</div><h1 id="categoriaTitulo">Categoria</h1><p id="categoriaDescripcion">Productos de esta categoria.</p></div>
+        <div class="productos-grid" id="productosGrid" data-filtro=""></div>
         <div class="paginacion" id="paginacionContenedor"></div>
     </div>
     <div class="modal-fondo" id="modalProducto"><div class="modal-caja"><div class="modal-encabezado"><span id="modalProdCategoria" style="font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;color:#2563EB;"></span><button class="btn-cerrar-modal" onclick="cerrarModal('modalProducto')"><i class="ti ti-x" aria-hidden="true"></i></button></div><div class="modal-cuerpo"><img class="modal-producto-imagen" id="modalProdImg" src="" alt=""><div class="modal-producto-nombre" id="modalProdNombre"></div><div class="modal-producto-precio" id="modalProdPrecio"></div><p class="modal-producto-descripcion" id="modalProdDescripcion"></p><div class="specs-titulo">Especificaciones tecnicas</div><div class="specs-grid" id="modalProdSpecs"></div></div></div></div>

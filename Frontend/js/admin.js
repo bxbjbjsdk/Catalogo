@@ -254,6 +254,8 @@ async function eliminarProducto(id) {
 /* ================================================
    CATEGORIAS
    ================================================ */
+let idCategoriaEditando = null;
+
 async function cargarCategorias() {
     const cont = document.getElementById('listaCategorias');
     if (!cont) return;
@@ -271,11 +273,35 @@ async function cargarCategorias() {
                         <span style="font-weight:bold;color:#0f172a;font-size:13px;">${c.nombre}</span>
                         <span style="color:#94a3b8;font-size:11px;margin-left:8px;">${c.totalProductos} productos</span>
                     </div>
-                    <button class="btn-peligro" onclick="eliminarCategoria(${c.id}, '${c.nombre}')">
-                        <i class="ti ti-trash" aria-hidden="true"></i>
-                    </button>
+                    <div class="td-acciones">
+                        <button class="btn-editar" data-id="${c.id}" data-nombre="${escaparAtributo(c.nombre)}" onclick="abrirFormEditarCategoria(this)">
+                            <i class="ti ti-edit" aria-hidden="true"></i> Editar
+                        </button>
+                        <button class="btn-peligro" data-id="${c.id}" data-nombre="${escaparAtributo(c.nombre)}" onclick="eliminarCategoria(this)">
+                            <i class="ti ti-trash" aria-hidden="true"></i>
+                        </button>
+                    </div>
                 </div>`).join('');
+
+        // Mantiene el selector de categorias del formulario de productos sincronizado
+        cargarCategoriasEnFormularioProducto(cats);
     } catch (e) { console.error(e.message); }
+}
+
+// Evita que un nombre de categoria con comillas rompa los atributos onclick
+function escaparAtributo(texto) {
+    return String(texto).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+// Llena el selector "Categoria" del formulario de productos con las
+// categorias reales que existen en ese momento (en vez de una lista fija)
+function cargarCategoriasEnFormularioProducto(categorias) {
+    const select = document.getElementById('fpCategoria');
+    if (!select) return;
+    const valorActual = select.value;
+    select.innerHTML = '<option value="">Seleccionar...</option>' +
+        categorias.map(c => `<option value="${escaparAtributo(c.nombre)}">${c.nombre}</option>`).join('');
+    if (valorActual) select.value = valorActual;
 }
 
 async function agregarCategoria() {
@@ -293,11 +319,42 @@ async function agregarCategoria() {
     } catch (e) { mostrarNotificacion('Error al agregar la categoria.', 'error'); }
 }
 
-async function eliminarCategoria(id, nombre) {
+function abrirFormEditarCategoria(boton) {
+    idCategoriaEditando = boton.dataset.id;
+    document.getElementById('fcNombre').value = boton.dataset.nombre;
+    abrirModal('modalFormCategoria');
+}
+
+async function guardarEdicionCategoria() {
+    const nombre = document.getElementById('fcNombre').value.trim();
+    if (!nombre) { mostrarNotificacion('Escribe el nombre de la categoria.', 'error'); return; }
+    if (!idCategoriaEditando) return;
+
+    try {
+        const res = await fetch(`${URL_BACKEND}/categorias/${idCategoriaEditando}`, {
+            method: 'PUT', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre })
+        });
+        if (!res.ok) throw new Error();
+        cerrarModal('modalFormCategoria');
+        mostrarNotificacion('Categoria actualizada.', 'exito');
+        idCategoriaEditando = null;
+        cargarCategorias(); cargarEstadisticas();
+    } catch (e) { mostrarNotificacion('Error al actualizar la categoria.', 'error'); }
+}
+
+async function eliminarCategoria(boton) {
+    const id     = boton.dataset.id;
+    const nombre = boton.dataset.nombre;
     if (!confirm(`Eliminar la categoria "${nombre}"?`)) return;
     try {
-        const res = await fetch(`${URL_BACKEND}/categorias/${id}`, { method: 'DELETE' });
-        if (!res.ok) throw new Error();
+        const res    = await fetch(`${URL_BACKEND}/categorias/${id}`, { method: 'DELETE' });
+        const datos  = await res.json().catch(() => ({}));
+        if (!res.ok) {
+            // Muestra el motivo real (ej. "tiene productos asociados") en vez de un error generico
+            mostrarNotificacion(datos.mensaje || 'Error al eliminar.', 'error');
+            return;
+        }
         mostrarNotificacion('Categoria eliminada.', 'info');
         cargarCategorias(); cargarEstadisticas();
     } catch (e) { mostrarNotificacion('Error al eliminar.', 'error'); }
@@ -321,7 +378,7 @@ async function cargarTablaUsuarios() {
             : usuarios.map(u => `
                 <tr>
                     <td style="color:#94a3b8">${u.id}</td>
-                    <td style="font-weight:bold;color:#0f172a">${u.nombre}</td>
+                    <td style="font-weight:bold;color:#0f172a">${u.nombre}${u.esPrincipal ? ' <i class="ti ti-lock" aria-hidden="true" title="Administrador principal" style="color:#94a3b8;"></i>' : ''}</td>
                     <td>${u.correo}</td>
                     <td><span class="badge-categoria ${u.rol === 'Administrador' ? 'tecnologia' : 'accesorios'}">${u.rol}</span></td>
                     <td>
@@ -329,9 +386,12 @@ async function cargarTablaUsuarios() {
                             <button class="btn-editar" onclick="abrirFormEditarUsuario(${u.id})">
                                 <i class="ti ti-edit" aria-hidden="true"></i> Editar
                             </button>
-                            <button class="btn-peligro" onclick="eliminarUsuario(${u.id}, '${u.nombre}')">
-                                <i class="ti ti-trash" aria-hidden="true"></i>
-                            </button>
+                            ${u.esPrincipal
+                                ? '<span style="font-size:11px;color:#94a3b8;padding:6px 8px;" title="El administrador principal no se puede eliminar">Protegido</span>'
+                                : `<button class="btn-peligro" data-id="${u.id}" data-nombre="${escaparAtributo(u.nombre)}" onclick="eliminarUsuario(this)">
+                                        <i class="ti ti-trash" aria-hidden="true"></i>
+                                   </button>`
+                            }
                         </div>
                     </td>
                 </tr>`).join('');
@@ -389,11 +449,18 @@ async function guardarUsuario() {
     } catch (e) { mostrarNotificacion('Error al guardar el empleado.', 'error'); }
 }
 
-async function eliminarUsuario(id, nombre) {
+async function eliminarUsuario(boton) {
+    const id     = boton.dataset.id;
+    const nombre = boton.dataset.nombre;
     if (!confirm(`Eliminar al empleado "${nombre}"?`)) return;
     try {
-        const res = await fetch(`${URL_BACKEND}/usuarios/${id}`, { method: 'DELETE' });
-        if (!res.ok) throw new Error();
+        const res   = await fetch(`${URL_BACKEND}/usuarios/${id}`, { method: 'DELETE' });
+        const datos = await res.json().catch(() => ({}));
+        if (!res.ok) {
+            // Muestra el motivo real (ej. "es el administrador principal") en vez de un error generico
+            mostrarNotificacion(datos.mensaje || 'Error al eliminar.', 'error');
+            return;
+        }
         mostrarNotificacion('Empleado eliminado.', 'info');
         cargarTablaUsuarios(); cargarEstadisticas();
     } catch (e) { mostrarNotificacion('Error al eliminar.', 'error'); }

@@ -90,7 +90,7 @@ public static class UsuariosController
             using (var conexion = db.ObtenerConexion())
             {
                 string query = @"
-                    SELECT u.Id, u.Nombre, u.Correo, r.Nombre AS Rol
+                    SELECT u.Id, u.Nombre, u.Correo, r.Nombre AS Rol, u.EsPrincipal
                     FROM Usuarios u
                     INNER JOIN Roles r ON u.RolId = r.Id
                     WHERE u.Activo = 1
@@ -105,10 +105,11 @@ public static class UsuariosController
                         {
                             usuarios.Add(new Usuario
                             {
-                                Id     = (int)lector["Id"],
-                                Nombre = lector["Nombre"].ToString()!,
-                                Correo = lector["Correo"].ToString()!,
-                                Rol    = lector["Rol"].ToString()!
+                                Id          = (int)lector["Id"],
+                                Nombre      = lector["Nombre"].ToString()!,
+                                Correo      = lector["Correo"].ToString()!,
+                                Rol         = lector["Rol"].ToString()!,
+                                EsPrincipal = (bool)lector["EsPrincipal"]
                             });
                         }
                     }
@@ -133,7 +134,7 @@ public static class UsuariosController
             using (var conexion = db.ObtenerConexion())
             {
                 string query = @"
-                    SELECT u.Id, u.Nombre, u.Correo, r.Nombre AS Rol
+                    SELECT u.Id, u.Nombre, u.Correo, r.Nombre AS Rol, u.EsPrincipal
                     FROM Usuarios u
                     INNER JOIN Roles r ON u.RolId = r.Id
                     WHERE u.Id = @Id AND u.Activo = 1";
@@ -149,10 +150,11 @@ public static class UsuariosController
                         {
                             return Results.Ok(new Usuario
                             {
-                                Id     = (int)lector["Id"],
-                                Nombre = lector["Nombre"].ToString()!,
-                                Correo = lector["Correo"].ToString()!,
-                                Rol    = lector["Rol"].ToString()!
+                                Id          = (int)lector["Id"],
+                                Nombre      = lector["Nombre"].ToString()!,
+                                Correo      = lector["Correo"].ToString()!,
+                                Rol         = lector["Rol"].ToString()!,
+                                EsPrincipal = (bool)lector["EsPrincipal"]
                             });
                         }
                     }
@@ -286,12 +288,23 @@ public static class UsuariosController
         {
             using (var conexion = db.ObtenerConexion())
             {
+                conexion.Open();
+
+                // Verificar si es el administrador principal antes de borrar
+                using (var cmdV = new SqlCommand("SELECT EsPrincipal FROM Usuarios WHERE Id = @Id", conexion))
+                {
+                    cmdV.Parameters.AddWithValue("@Id", id);
+                    var res = cmdV.ExecuteScalar();
+                    if (res == null) return Results.NotFound(new { mensaje = "Usuario no encontrado." });
+                    if ((bool)res)
+                        return Results.BadRequest(new { mensaje = "No se puede eliminar al administrador principal." });
+                }
+
                 string query = "DELETE FROM Usuarios WHERE Id = @Id";
 
                 using (var comando = new SqlCommand(query, conexion))
                 {
                     comando.Parameters.AddWithValue("@Id", id);
-                    conexion.Open();
 
                     int filas = comando.ExecuteNonQuery();
                     if (filas == 0)

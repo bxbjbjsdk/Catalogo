@@ -15,9 +15,7 @@
         <div class="sidebar-seccion">Catalogo</div>
         <ul>
             <li><a href="index.html"><i class="ti ti-home" aria-hidden="true"></i> Inicio</a></li>
-            <li><a href="tecnologia.html"><i class="ti ti-device-laptop" aria-hidden="true"></i> Tecnologia</a></li>
-            <li><a href="accesorios.html"><i class="ti ti-headphones" aria-hidden="true"></i> Accesorios</a></li>
-            <li><a href="ofertas.html" class="activo"><i class="ti ti-tag" aria-hidden="true"></i> Ofertas</a></li>
+            <li id="itemOfertas"><a href="ofertas.html" class="activo"><i class="ti ti-tag" aria-hidden="true"></i> Ofertas</a></li>
         </ul>
         <div class="sidebar-seccion">Informacion</div>
         <ul><li><a href="tienda.html"><i class="ti ti-building-store" aria-hidden="true"></i> La tienda</a></li></ul>
@@ -37,6 +35,7 @@
             <p>Descuentos exclusivos por tiempo limitado en los mejores productos.</p>
         </div>
         <div class="productos-grid" id="productosGrid" data-filtro="Ofertas"></div>
+        <div class="paginacion" id="paginacionContenedor"></div>
     </div>
     <div class="modal-fondo" id="modalProducto"><div class="modal-caja"><div class="modal-encabezado"><span id="modalProdCategoria" style="font-size:10px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;color:#2563EB;"></span><button class="btn-cerrar-modal" onclick="cerrarModal('modalProducto')"><i class="ti ti-x" aria-hidden="true"></i></button></div><div class="modal-cuerpo"><img class="modal-producto-imagen" id="modalProdImg" src="" alt=""><div class="modal-producto-nombre" id="modalProdNombre"></div><div class="modal-producto-precio" id="modalProdPrecio"></div><p class="modal-producto-descripcion" id="modalProdDescripcion"></p><div class="specs-titulo">Especificaciones tecnicas</div><div class="specs-grid" id="modalProdSpecs"></div></div></div></div>
     <div class="modal-fondo" id="modalLogin"><div class="modal-caja"><div class="login-encabezado"><div class="login-encabezado-icono"><i class="ti ti-lock" aria-hidden="true"></i></div><h2>Acceso empleados</h2><p>Solo personal autorizado de RYC Tech</p></div><div class="login-cuerpo"><div class="form-grupo"><label for="loginCorreo">Correo electronico</label><input type="email" id="loginCorreo" placeholder="correo@ryctech.com"></div><div class="form-grupo"><label for="loginPassword">Contrasena</label><input type="password" id="loginPassword" placeholder="Contrasena"></div><div class="form-acciones" style="justify-content:space-between;align-items:center;"><button class="btn-secundario" onclick="cerrarModal('modalLogin')">Cancelar</button><button class="btn-primario" onclick="iniciarSesion()">Iniciar sesion</button></div></div></div></div>

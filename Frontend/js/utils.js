@@ -73,3 +73,36 @@ function mostrarNotificacion(mensaje, tipo = 'info') {
 
     setTimeout(() => notif.remove(), 3500);
 }
+
+/* ------------------------------------------------
+   MENU DE CATEGORIAS (dinamico)
+   Agrega automaticamente un enlace por cada categoria
+   que exista en ese momento (incluyendo las nuevas que
+   se agreguen desde el panel), justo antes de "Ofertas".
+   Se ejecuta en todas las paginas porque esta en utils.js.
+   ------------------------------------------------ */
+async function cargarMenuCategorias() {
+    const ancla = document.getElementById('itemOfertas');
+    if (!ancla) return;
+
+    try {
+        const res = await fetch(`${URL_BACKEND}/categorias`);
+        if (!res.ok) return;
+        const categorias = await res.json();
+
+        const params          = new URLSearchParams(window.location.search);
+        const categoriaActual = params.get('categoria');
+
+        categorias.forEach(cat => {
+            const li     = document.createElement('li');
+            const activo = cat.nombre === categoriaActual ? ' class="activo"' : '';
+            li.innerHTML = `<a href="categoria.html?categoria=${encodeURIComponent(cat.nombre)}"${activo}>` +
+                            `<i class="ti ti-folder" aria-hidden="true"></i> ${cat.nombre}</a>`;
+            ancla.parentNode.insertBefore(li, ancla);
+        });
+    } catch (e) {
+        console.error('No se pudo cargar el menu de categorias:', e.message);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', cargarMenuCategorias);
