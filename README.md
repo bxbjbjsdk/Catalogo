@@ -1,14 +1,4 @@
-# RYC Tech v3 — Instrucciones
-
-## Que hay de nuevo en esta version
-
-- Sin errores de URL_BACKEND duplicada
-- Subida de imagenes desde el formulario (el empleado selecciona el archivo)
-- Campo de Badge (Nuevo / Oferta) en el formulario de productos
-- Campo de Precio Original para mostrar descuentos
-- Configurado para correr en red local (192.168.100.16)
-
----
+# RYC Tech — Instrucciones
 
 ## Estructura
 
@@ -41,22 +31,21 @@ RYCTech_v3/
 3. Presiona F5 para ejecutar
 
 ### Paso 2 — Cadena de conexion
-Abre `Backend/RYCTech.Api/Data/ConexionDB.cs` y cambia:
+Abre `Backend/RYCTech.Api/Data/ConexionDB.cs` y cambia el valor de `Server`
+por el nombre de tu propia instancia de SQL Server, por ejemplo:
 ```
-Server=TU_PC\SQLEXPRESS  →  Server=RODRIGO\SQLEXPRESS01
+Server=TU_PC\SQLEXPRESS  →  Server=TU_USUARIO\TU_INSTANCIA
 ```
 
 ### Paso 3 — Correr el backend
-```
 cd Backend\RYCTech.Api
 dotnet run
-```
+
 Debe aparecer: `Now listening on: http://0.0.0.0:5000`
 
 ### Paso 4 — Abrir el frontend
 Abre `Frontend/index.html` en el navegador o con Live Server.
 
----
 
 ## Red local
 
@@ -75,7 +64,6 @@ Si tu IP cambia, actualiza esa linea en `Frontend/js/utils.js`.
 | Correo                  | Contrasena   | Rol           |
 |-------------------------|--------------|---------------|
 | admin@ryctech.com       | admin123     | Administrador |
-| carlos@ryctech.com      | empleado123  | Empleado      |
 
 ---
 
