@@ -10,6 +10,16 @@
 const URL_BACKEND = `http://${window.location.hostname}:5000/api`;
 
 /* ------------------------------------------------
+   FORMATEAR PRECIO EN PESOS MEXICANOS (MXN)
+   ------------------------------------------------ */
+function formatearPrecio(valor) {
+    return new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN'
+    }).format(parseFloat(valor));
+}
+
+/* ------------------------------------------------
    ABRIR MODAL
    ------------------------------------------------ */
 function abrirModal(id) {

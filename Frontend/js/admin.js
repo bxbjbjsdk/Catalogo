@@ -105,8 +105,8 @@ function dibujarTablaProductos(productos) {
                 ${p.badge ? `<span class="tarjeta-badge ${p.badge}" style="position:static;display:inline-block;margin-left:4px;">${p.badge}</span>` : ''}
             </td>
             <td>
-                ${p.precioOriginal ? `<span style="text-decoration:line-through;color:#94a3b8;font-size:11px;">$${parseFloat(p.precioOriginal).toFixed(2)}</span><br>` : ''}
-                $${parseFloat(p.precio).toFixed(2)}
+                ${p.precioOriginal ? `<span style="text-decoration:line-through;color:#94a3b8;font-size:11px;">${formatearPrecio(p.precioOriginal)}</span><br>` : ''}
+                ${formatearPrecio(p.precio)}
             </td>
             <td>
                 <div class="td-acciones">

@@ -124,10 +124,10 @@ function dibujarProductos(productos, sinResultados = false) {
             <div class="tarjeta-footer">
                 <div class="tarjeta-precio">
                     ${producto.precioOriginal
-                        ? `<span class="precio-original">$${parseFloat(producto.precioOriginal).toFixed(2)}</span>`
+                        ? `<span class="precio-original">${formatearPrecio(producto.precioOriginal)}</span>`
                         : ''
                     }
-                    $${parseFloat(producto.precio).toFixed(2)}
+                    ${formatearPrecio(producto.precio)}
                 </div>
                 <button class="btn-ver-mas" onclick="event.stopPropagation(); abrirDetalleProducto(${producto.id})">
                     Ver mas
@@ -220,12 +220,12 @@ async function abrirDetalleProducto(id) {
         if (producto.precioOriginal) {
             precioEl.innerHTML = `
                 <span style="font-size:13px; color:#94a3b8; text-decoration:line-through; font-weight:normal;">
-                    $${parseFloat(producto.precioOriginal).toFixed(2)}
+                    ${formatearPrecio(producto.precioOriginal)}
                 </span>
-                $${parseFloat(producto.precio).toFixed(2)}
+                ${formatearPrecio(producto.precio)}
             `;
         } else {
-            precioEl.textContent = `$${parseFloat(producto.precio).toFixed(2)}`;
+            precioEl.textContent = formatearPrecio(producto.precio);
         }
 
         const specsEl = document.getElementById('modalProdSpecs');
