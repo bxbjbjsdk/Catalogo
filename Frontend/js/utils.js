@@ -80,6 +80,9 @@ function mostrarNotificacion(mensaje, tipo = 'info') {
    que exista en ese momento (incluyendo las nuevas que
    se agreguen desde el panel), justo antes de "Ofertas".
    Se ejecuta en todas las paginas porque esta en utils.js.
+   Tambien se puede volver a llamar (ej. desde admin.js al
+   agregar/editar/eliminar una categoria) para refrescar
+   el menu sin tener que recargar la pagina.
    ------------------------------------------------ */
 async function cargarMenuCategorias() {
     const ancla = document.getElementById('itemOfertas');
@@ -90,11 +93,16 @@ async function cargarMenuCategorias() {
         if (!res.ok) return;
         const categorias = await res.json();
 
+        // Quita los enlaces que se hayan agregado en una llamada anterior,
+        // para no duplicarlos ni dejar categorias ya eliminadas
+        document.querySelectorAll('.menu-categoria-dinamica').forEach(li => li.remove());
+
         const params          = new URLSearchParams(window.location.search);
         const categoriaActual = params.get('categoria');
 
         categorias.forEach(cat => {
             const li     = document.createElement('li');
+            li.className = 'menu-categoria-dinamica';
             const activo = cat.nombre === categoriaActual ? ' class="activo"' : '';
             li.innerHTML = `<a href="categoria.html?categoria=${encodeURIComponent(cat.nombre)}"${activo}>` +
                             `<i class="ti ti-folder" aria-hidden="true"></i> ${cat.nombre}</a>`;

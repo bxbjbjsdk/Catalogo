@@ -76,6 +76,12 @@ a {
     color: white;
 }
 
+.sidebar-logo-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* Etiqueta de seccion (ej: "CATALOGO") */
 .sidebar-seccion {
     font-size: 10px;

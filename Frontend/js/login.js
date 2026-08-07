@@ -50,6 +50,15 @@ async function iniciarSesion() {
    ------------------------------------------------ */
 function cerrarSesion() {
     sessionStorage.removeItem('sesion');
+
+    // Si estamos dentro del panel admin, ya no debe seguir viendose:
+    // manda al usuario al inicio en vez de dejarlo en una pantalla protegida
+    const enPanelAdmin = window.location.pathname.endsWith('admin.html');
+    if (enPanelAdmin) {
+        window.location.href = 'index.html';
+        return;
+    }
+
     actualizarBotonLogin();
     mostrarNotificacion('Sesion cerrada.', 'info');
 }

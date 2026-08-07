@@ -245,6 +245,13 @@ async function eliminarProducto(id) {
         const res = await fetch(`${URL_BACKEND}/productos/${id}`, { method: 'DELETE' });
         if (!res.ok) throw new Error();
         cerrarModal('modalConfirmarEliminar');
+
+        // Quita la fila de inmediato en vez de esperar a que cargarTablaProductos()
+        // vuelva a pedir la lista completa al servidor
+        const fila = document.querySelector(`#tablaProductosCuerpo button.btn-peligro[onclick*="confirmarEliminarProducto(${id},"]`)?.closest('tr');
+        if (fila) fila.remove();
+        todosLosProductos = todosLosProductos.filter(p => p.id !== id);
+
         mostrarNotificacion('Producto eliminado.', 'info');
         cargarTablaProductos();
         cargarEstadisticas();
@@ -315,7 +322,7 @@ async function agregarCategoria() {
         if (!res.ok) throw new Error();
         document.getElementById('nuevaCategoria').value = '';
         mostrarNotificacion('Categoria agregada.', 'exito');
-        cargarCategorias(); cargarEstadisticas();
+        cargarCategorias(); cargarEstadisticas(); cargarMenuCategorias();
     } catch (e) { mostrarNotificacion('Error al agregar la categoria.', 'error'); }
 }
 
@@ -339,7 +346,7 @@ async function guardarEdicionCategoria() {
         cerrarModal('modalFormCategoria');
         mostrarNotificacion('Categoria actualizada.', 'exito');
         idCategoriaEditando = null;
-        cargarCategorias(); cargarEstadisticas();
+        cargarCategorias(); cargarEstadisticas(); cargarMenuCategorias();
     } catch (e) { mostrarNotificacion('Error al actualizar la categoria.', 'error'); }
 }
 
@@ -355,8 +362,11 @@ async function eliminarCategoria(boton) {
             mostrarNotificacion(datos.mensaje || 'Error al eliminar.', 'error');
             return;
         }
+        // Quita la fila de inmediato en vez de esperar a que cargarCategorias()
+        // vuelva a pedir la lista completa al servidor
+        boton.closest('div').parentElement.remove();
         mostrarNotificacion('Categoria eliminada.', 'info');
-        cargarCategorias(); cargarEstadisticas();
+        cargarCategorias(); cargarEstadisticas(); cargarMenuCategorias();
     } catch (e) { mostrarNotificacion('Error al eliminar.', 'error'); }
 }
 
@@ -461,6 +471,9 @@ async function eliminarUsuario(boton) {
             mostrarNotificacion(datos.mensaje || 'Error al eliminar.', 'error');
             return;
         }
+        // Quita la fila de inmediato en vez de esperar a que cargarTablaUsuarios()
+        // vuelva a pedir la lista completa al servidor
+        boton.closest('tr').remove();
         mostrarNotificacion('Empleado eliminado.', 'info');
         cargarTablaUsuarios(); cargarEstadisticas();
     } catch (e) { mostrarNotificacion('Error al eliminar.', 'error'); }
