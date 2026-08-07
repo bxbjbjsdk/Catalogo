@@ -10,6 +10,22 @@
 const URL_BACKEND = `http://${window.location.hostname}:5000/api`;
 
 /* ------------------------------------------------
+   NUMERO DE WHATSAPP DE LA TIENDA
+   (mismo numero usado en la pagina "La tienda")
+   ------------------------------------------------ */
+const WHATSAPP_NUMERO = '528995062483';
+
+/* ------------------------------------------------
+   GENERAR LINK DE WHATSAPP CON MENSAJE AUTOMATICO
+   PARA UN PRODUCTO ESPECIFICO
+   ------------------------------------------------ */
+function linkWhatsappProducto(nombreProducto, precio) {
+    const precioTexto = precio ? ` (${formatearPrecio(precio)})` : '';
+    const mensaje = `Hola, me interesaria el ${nombreProducto}${precioTexto}. ¿Me pueden dar mas informacion?`;
+    return `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(mensaje)}`;
+}
+
+/* ------------------------------------------------
    FORMATEAR PRECIO EN PESOS MEXICANOS (MXN)
    ------------------------------------------------ */
 function formatearPrecio(valor) {

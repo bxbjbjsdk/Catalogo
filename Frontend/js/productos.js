@@ -240,6 +240,19 @@ async function abrirDetalleProducto(id) {
             specsEl.innerHTML = '<p style="color:#94a3b8; font-size:12px;">Sin especificaciones registradas.</p>';
         }
 
+        // Boton de WhatsApp con mensaje automatico (se crea una vez y se reutiliza)
+        let btnWhatsapp = document.getElementById('modalProdWhatsapp');
+        if (!btnWhatsapp) {
+            btnWhatsapp = document.createElement('a');
+            btnWhatsapp.id = 'modalProdWhatsapp';
+            btnWhatsapp.className = 'btn-whatsapp-modal';
+            btnWhatsapp.target = '_blank';
+            btnWhatsapp.rel = 'noopener';
+            btnWhatsapp.innerHTML = '<i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Preguntar por WhatsApp';
+            specsEl.parentNode.appendChild(btnWhatsapp);
+        }
+        btnWhatsapp.href = linkWhatsappProducto(producto.nombre, producto.precio);
+
         abrirModal('modalProducto');
 
     } catch (error) {

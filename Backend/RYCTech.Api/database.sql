@@ -7,6 +7,10 @@
 -- 2. Abre este archivo o copia el contenido
 -- 3. Ejecuta todo el script (F5 o boton Execute)
 -- 4. Listo, las tablas y datos de prueba se crean solos
+--
+-- NOTA: Los precios de los productos de prueba ya estan
+-- en pesos mexicanos (MXN), convertidos con un tipo de
+-- cambio de referencia de 18.50 MXN/USD.
 -- ================================================
 
 -- Crear la base de datos si no existe
@@ -75,7 +79,7 @@ BEGIN
         Id             INT IDENTITY(1,1) PRIMARY KEY,
         Nombre         VARCHAR(200)   NOT NULL,
         Descripcion    TEXT,
-        -- Precio con hasta 10 digitos y 2 decimales
+        -- Precio en MXN, hasta 10 digitos y 2 decimales
         Precio         DECIMAL(10,2)  NOT NULL CHECK (Precio >= 0),
         -- PrecioOriginal es NULL si el producto no esta en oferta
         PrecioOriginal DECIMAL(10,2)  NULL,
@@ -152,59 +156,59 @@ BEGIN
 END
 GO
 
--- Productos de prueba
+-- Productos de prueba (precios en MXN, tipo de cambio de referencia 18.50)
 IF NOT EXISTS (SELECT * FROM Productos)
 BEGIN
     INSERT INTO Productos (Nombre, Descripcion, Precio, PrecioOriginal, Imagen, Badge, CategoriaId) VALUES
     (
         'Samsung Galaxy S24',
         'Smartphone de ultima generacion con conectividad 5G, pantalla Dynamic AMOLED 2X de 6.2 pulgadas y procesador Snapdragon 8 Gen 3.',
-        899.99, NULL, 'imagenes/Samsung Galaxy S24.jpg', 'nuevo', 1
+        16649.82, NULL, 'imagenes/Samsung Galaxy S24.jpg', 'nuevo', 1
     ),
     (
         'MacBook Air M2',
         'Laptop ultradelgada con el chip M2 de Apple. Rendimiento profesional con hasta 18 horas de bateria.',
-        1199.00, NULL, 'imagenes/MacBook Air Apple.webp', NULL, 1
+        22181.50, NULL, 'imagenes/MacBook Air Apple.webp', NULL, 1
     ),
     (
         'Sony WH-1000XM5',
         'Audifonos premium con cancelacion de ruido lider en la industria. Hasta 30 horas de reproduccion.',
-        349.99, 399.99, 'imagenes/Sony WH.jpg', 'oferta', 2
+        6474.82, 7399.82, 'imagenes/Sony WH.jpg', 'oferta', 2
     ),
     (
         'Apple Watch Series 9',
         'Smartwatch con chip S9, pantalla Always-On Retina mas brillante y nuevas funciones de salud.',
-        399.00, NULL, 'imagenes/Apple Watch.jpg', NULL, 1
+        7381.50, NULL, 'imagenes/Apple Watch.jpg', NULL, 1
     ),
     (
         'iPad Air',
         'Tablet versatil con chip M1, pantalla Liquid Retina de 10.9 pulgadas y soporte para Apple Pencil.',
-        599.99, NULL, 'imagenes/Apple iPad Air.jpg', NULL, 1
+        11099.82, NULL, 'imagenes/Apple iPad Air.jpg', NULL, 1
     ),
     (
         'Nintendo Switch 2',
         'Nueva consola con soporte 4K, 256 GB de almacenamiento, chat integrado y compatible con juegos de Switch.',
-        220.00, 649.99, 'imagenes/Nintendo Switch.jpg', 'oferta', 1
+        4070.00, 12024.82, 'imagenes/Nintendo Switch.jpg', 'oferta', 1
     ),
     (
         'JBL Wave Beam',
         'Audifonos True Wireless Stereo intra-auditivos con Deep Bass Sound y hasta 32 horas de reproduccion.',
-        176.00, 220.00, 'imagenes/oferta.jpg', 'oferta', 2
+        3256.00, 4070.00, 'imagenes/oferta.jpg', 'oferta', 2
     ),
     (
         'AirPods Pro',
         'Audifonos inalambricos con audio espacial personalizado y cancelacion activa de ruido.',
-        212.49, 249.99, 'imagenes/AirProds Pro.jpg', 'oferta', 2
+        3931.07, 4624.82, 'imagenes/AirProds Pro.jpg', 'oferta', 2
     ),
     (
         'Logitech G502',
         'Mouse gamer con sensor HERO 25K, 11 botones programables e iluminacion RGB personalizable.',
-        89.99, NULL, 'imagenes/mouse-gamer.jpg', NULL, 2
+        1664.82, NULL, 'imagenes/mouse-gamer.jpg', NULL, 2
     ),
     (
         'Hisense Televisor 55"',
         'Smart TV 55 pulgadas con resolucion 4K Ultra HD, HDR10+ y sistema operativo VIDAA.',
-        649.99, NULL, 'imagenes/Hisense Televisor.jpg', 'nuevo', 1
+        12024.82, NULL, 'imagenes/Hisense Televisor.jpg', 'nuevo', 1
     );
 END
 GO

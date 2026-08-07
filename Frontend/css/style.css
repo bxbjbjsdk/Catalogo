@@ -527,6 +527,27 @@ a {
     color: white;
 }
 
+/* Boton "Preguntar por WhatsApp" en el modal de detalle */
+.btn-whatsapp-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 12px 16px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.btn-whatsapp-modal:hover {
+    background-color: #1DA851;
+}
+
 /* ================================================
    ESTADO VACIO (cuando no hay productos)
    ================================================ */
